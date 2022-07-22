@@ -158,7 +158,7 @@ class AnimatedListDiffDispatcher<T> {
         spawnNewInsolateCount)) {
       final completer = Completer<_DiffResultDispatcher>();
       _cancelable = Executor().execute<T, T, AnimatedListDiffBaseComparator<T>,
-              void, _DiffResultDispatcher>(
+              void, _DiffResultDispatcher, void>(
           arg1: oldList, arg2: newList, arg3: comparator, fun3: _calculateDiff)
         ..then((value) {
           _cancelable = null;
@@ -166,7 +166,7 @@ class AnimatedListDiffDispatcher<T> {
         }).catchError((e) {});
       return completer.future;
     } else {
-      return _calculateDiff(oldList, newList, comparator);
+      return _calculateDiff(oldList, newList, comparator, null);
     }
   }
 
@@ -179,8 +179,8 @@ class AnimatedListDiffDispatcher<T> {
   }
 }
 
-_DiffResultDispatcher _calculateDiff<T>(
-    T oldList, T newList, AnimatedListDiffBaseComparator<T> comparator) {
+FutureOr<_DiffResultDispatcher> _calculateDiff<T>(
+    T oldList, T newList, AnimatedListDiffBaseComparator<T> comparator, dynamic) {
   return _DiffResultDispatcher(calculateDiff(
     _DiffDelegate<T>(
       oldList,

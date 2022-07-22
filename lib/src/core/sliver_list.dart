@@ -26,9 +26,9 @@ mixin AnimatedRenderSliverMultiBoxAdaptor
   }
 
   void _markSafeNeedsLayout() {
-    if (WidgetsBinding.instance?.schedulerPhase ==
+    if (WidgetsBinding.instance.schedulerPhase ==
         SchedulerPhase.persistentCallbacks) {
-      WidgetsBinding.instance?.addPostFrameCallback((_) => markNeedsLayout());
+      WidgetsBinding.instance.addPostFrameCallback((_) => markNeedsLayout());
     } else {
       markNeedsLayout();
     }
@@ -168,7 +168,7 @@ mixin AnimatedRenderSliverMultiBoxAdaptor
     if (isReordering) _reorderPerformLayout();
 
     if (fixScrollableRepainting) {
-      WidgetsBinding.instance?.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         _notifyScrollable();
       });
     }
@@ -488,7 +488,7 @@ mixin AnimatedRenderSliverMultiBoxAdaptor
   // Finally, it considers wheter to trigger a scroling of the list because
   // the dragged item has been moved the the top or bottom of it.
   void _reorderPerformLayout() {
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _reorderComputeNewOffset();
     });
 
@@ -507,7 +507,7 @@ mixin AnimatedRenderSliverMultiBoxAdaptor
           constraints, controller.position, _reorderDraggedItemSize);
       if (delta != 0.0) {
         final value = position.pixels + delta;
-        WidgetsBinding.instance!.addPostFrameCallback((_) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
           controller.jumpTo(value);
           markNeedsLayout();
         });

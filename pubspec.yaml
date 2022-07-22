@@ -6,15 +6,15 @@ homepage: https://github.com/DavideBelsole/great_list_view
 repository: https://github.com/DavideBelsole/great_list_view
 
 environment:
-  sdk: ">=2.14.0 <3.0.0"
-  flutter: ">=2.0.6"
+  sdk: '>=2.17.6 <3.0.0'
+  flutter: ">=3.0.4"
 
 dependencies:
   collection: any
-  diffutil_dart: ">=2.0.0"
+  diffutil_dart: ">=3.0.0"
   flutter:
     sdk: flutter
-  worker_manager: ">=4.0.2"
+  worker_manager: ">=4.4.0"
 
 dev_dependencies:
   flutter_test:
