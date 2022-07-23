@@ -59,7 +59,7 @@ class _BodyState extends State<Body> {
             sameItem: (a, b) => a.id == b.id,
             sameContent: (a, b) =>
                 a.color == b.color && a.fixedHeight == b.fixedHeight),
-        itemBuilder: (context, item, data) => data.measuring
+        itemBuilder: (context, item, index, data) => data.measuring
             ? Container(
                 margin: EdgeInsets.all(5), height: item.fixedHeight ?? 60)
             : Item(data: item),

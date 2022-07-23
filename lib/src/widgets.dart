@@ -299,7 +299,7 @@ class AutomaticAnimatedListView<T> extends AnimatedListView {
           listController: listController,
           delegate: AnimatedSliverChildBuilderDelegate(
             (context, index, data) {
-              return itemBuilder(context, list[index], data);
+              return itemBuilder(context, list[index], index, data);
             },
             list.length,
             addAutomaticKeepAlives: addAutomaticKeepAlives,

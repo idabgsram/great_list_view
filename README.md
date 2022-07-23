@@ -1,5 +1,7 @@
 # great_list_view
 
+Forked and Maintained by Guzram
+
 ## Overview
 
 A Flutter package that includes a powerful, animated and reorderable list view. Just notify the list view of changes in your underlying list and the list view will automatically animate. You can also change the entire list and automatically dispatch the differences detected by the Myers alghoritm. 
@@ -35,7 +37,9 @@ Add this to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  great_list_view: ^0.1.4
+  great_list_view: 
+    git:
+        url: https://github.com/idabgsram/great_list_view
 ```
 
 and run;
@@ -138,7 +142,7 @@ class _BodyState extends State<Body> {
             sameItem: (a, b) => a.id == b.id,
             sameContent: (a, b) =>
                 a.color == b.color && a.fixedHeight == b.fixedHeight),
-        itemBuilder: (context, item, data) => data.measuring
+        itemBuilder: (context, item, index, data) => data.measuring
             ? Container(
                 margin: EdgeInsets.all(5), height: item.fixedHeight ?? 60)
             : Item(data: item),
@@ -290,7 +294,7 @@ class _BodyState extends State<Body> {
                 a.text == b.text &&
                 a.color == b.color &&
                 a.fixedHeight == b.fixedHeight),
-        itemBuilder: (context, item, data) => data.measuring
+        itemBuilder: (context, item, index, data) => data.measuring
             ? Container(
                 margin: EdgeInsets.all(5), height: item.fixedHeight ?? 60)
             : Item(data: item),

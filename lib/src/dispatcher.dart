@@ -364,7 +364,7 @@ class _DiffResultDispatcher {
 //
 
 typedef AnimatedListDiffListBuilder<T> = Widget Function(
-    BuildContext context, T element, AnimatedWidgetBuilderData data);
+    BuildContext context, T element, int index, AnimatedWidgetBuilderData data);
 
 /// This class extends [AnimatedListDiffListBaseComparator] in order to handle easier
 /// the simplified version with [List]s objects.
@@ -415,7 +415,7 @@ class AnimatedListDiffListDispatcher<T>
           initialList: currentList,
           builder: (BuildContext context, List<T> list, int index,
                   AnimatedWidgetBuilderData data) =>
-              itemBuilder.call(context, list[index], data),
+              itemBuilder.call(context, list[index], index, data),
           comparator: _ListDiffComparator<T>(comparator),
           spawnNewInsolateCount: spawnNewInsolateCount,
         );
